@@ -1,0 +1,30 @@
+{
+  "name": "backend-journey",
+  "version": "1.0.0",
+  "description": "journey to master nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pemeraldy/backendJorney.git"
+  },
+  "keywords": [
+    "nodejs",
+    "node"
+  ],
+  "author": "Peter Olu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pemeraldy/backendJorney/issues"
+  },
+  "homepage": "https://github.com/pemeraldy/backendJorney#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "slugify": "^1.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
