@@ -2,9 +2,21 @@ const fs = require('fs');
 const express = require('express');
 
 const app = express();
+const port = 3000;
 
 // middleware : a function that modifies the incoming data
 app.use(express.json());
+
+/**Custorm middleware */
+app.use((req, res, next) => {
+  console.log("hey from middleware")
+  next()
+})
+
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString()
+  next();
+})
 
 /*Read file */
 const tours = JSON.parse(
@@ -15,6 +27,7 @@ const tours = JSON.parse(
 const getAllTours = (req, res) => {
   res.status(200).json({
     status: 200,
+    posted: req.requestTime,
     result: tours.length,
     data: {
       tours,
@@ -87,6 +100,41 @@ const deleteTour = (req, res) => {
   });
 }
 
+/**Users route handlers**/
+const getAllUsers = (req, res) => {
+  res.status(500).json({
+    status: 500,
+    message: 'This route is not yet implemented'
+  })
+}
+
+const getUser = (req, res) => {
+  res.status(500).json({
+    status: 500,
+    message: 'This route is not available'
+  })
+}
+
+const createUser = (req, res) => {
+  res.status(500).json({
+    status: 500,
+    message: 'This route is not available'
+  })
+}
+
+const updateUser = (req, res) => {
+  res.status(500).json({
+    status: 500,
+    message: 'This route is not available'
+  })
+}
+const deleteUser = (req, res) => {
+  res.status(500).json({
+    status: 500,
+    message: 'This route is not available'
+  })
+}
+
 /*
 app.get('/api/v1/tours', getAllTours);
 app.get('/api/v1/tours/:id', getTour);
@@ -100,12 +148,25 @@ app
   .get(getAllTours)
   .post(createTour)
 
+
 app
   .route('/api/v1/tours/:id')
   .get(getTour)
   .patch(updateTour)
   .delete(deleteTour)
 
-const port = 3000;
+/**Users middleware**/
+app
+  .route('/api/v1/users')
+  .get(getAllUsers)
+  .post(createUser)
+
+app
+  .route('/api/v1/user/:id')
+  .get(getUser)
+  .patch(updateUser)
+  .delete(deleteUser)
+
+
 
 app.listen(port, () => console.log('App running on port ' + port));
