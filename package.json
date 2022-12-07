@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/pemeraldy/backendJorney#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "slugify": "^1.4.0"
   },
   "devDependencies": {
